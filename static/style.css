@@ -3,6 +3,26 @@
     background-size: cover;
 }
 
+.bg-2 {
+    background-image: url(./images/bg2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: calc(100vh - 86px); 
+}
+
+.bg-3 {
+    background-image: url(./images/bg3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: calc(100vh - 86px); 
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
 .header {
     padding: 250px;
     text-align: start;
@@ -29,6 +49,11 @@ h2 {
 }
 
 .tc {
+    text-align: center;
+}
+
+.justify-content-center {
+    padding-top: 100px;
     text-align: center;
 }
 
@@ -66,3 +91,21 @@ h2 {
     text-align: center
 }
 
+.logbox {
+    width: 400px;
+    height: 400px;
+    background: transparent;
+    border: 2px solid white;
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px black;
+    padding: 70px;
+}
+
+.logbox p {
+    color: white;
+}
+
+a {
+    color: aqua;
+}

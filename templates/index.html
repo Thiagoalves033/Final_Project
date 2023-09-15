@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block title %} Health Tools {% endblock %}
+
+{% block main %} 
+    
+<!-- Header -->
+    <div class="bg-1">
+        <div class="header">
+            <h1>Every information you need in the palm of your hands!</h1>
+            <p>Keep track of allergies, vaccination, medications and much more.</p>
+            <a href="register.html" type="submit" class="btn btn-warning btn-lg my-4">Register Now!</a>
+        </div>
+    </div>
+    
+<!-- Content -->
+    <div class="container tc my-4">
+        <h2 class="box">
+            <p>We do our best to help you organize your health information.</p>
+            <p>Check our options!</p>
+        </h2>
+    </div>
+    
+    <div class="div alter">
+        <div class="container ct-1">
+            <!-- First Row of Images -->
+            <div class="row">
+                <div class="col-xl-4 textimg">
+                    <img src="/static/images/blood.jpg">
+                    <p>Have your ever forgot your own or your relatives blood type? No need to worry anymore!</p>
+                </div>
+
+                <div class="col-xl-4 textimg">
+                    <img src="/static/images/vaccine.jpg">
+                    <p>Keep track of every vaccine and every dose may prove to be a challege with only physical records. Time to change that!</p>
+                </div>
+
+                <div class="col-xl-4 textimg">
+                    <img src="/static/images/medicine.jpg">
+                    <p>Sometimes we have to manage multiple medications at the same time, often for many people. Never forget who takes what!</p>
+                </div>
+            </div>
+                
+            <!-- Second Row of Images -->
+            <div class="row my-5">
+                <div class="col-xl-4 textimg">
+                    <img src="/static/images/allergy.jpg">
+                    <p>It's extremely important to know which allergies our relatives have, it may even save their lives during an emergency.</p>
+                </div>
+
+                <div class="col-xl-4 textimg">
+                    <img src="/static/images/appointment.jpg">
+                    <p>Missing appointments not only is upsetting but also irresponsible. Take notes.</p>
+                </div>
+
+                <div class="col-xl-4 textimg">
+                    <img src="/static/images/practices.jpg">
+                    <p>We also have a collection of good practices to help our users become healthier!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container tc my-4">
+        <h2 class="box">
+            <p>About our mission</p>
+        </h2>
+    </div>
+
+    <div class="div alter">
+        <div class="container ct-1">
+            <!-- First Paragraph -->
+            <div class="row">
+                <div class="col-9 textimg">
+                    <p>Our mission is to empower individuals to take charge of their health and well-being. We achieve this by offering easily accessible, trustworthy, and personalized health information and tools. Our aim is to equip people with the knowledge and resources they need to make informed decisions about their health, enabling them to lead healthier and more fulfilling lives.</p>
+                </div>
+            </div>
+            
+            <!-- Second Paragraph -->
+            <div class="row my-2">
+                <div class="col-9 textimg">
+                    <p>In today's fast-paced world, keeping track of crucial health details such as blood type, medications, allergies, vaccinations, and medical appointments can be a challenging task. We understand the importance of having easy access to this information, both for your peace of mind and for the efficient coordination of your healthcare.</p>
+                </div>
+            </div>
+
+            <!-- Third Paragraph -->
+            <div class="row my-2">
+                <div class="col-9 textimg">
+                    <p>Our primary goal is to simplify your health journey, making it easier for you to stay informed and proactive about your well-being.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

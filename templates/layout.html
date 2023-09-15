@@ -24,31 +24,31 @@
     </head>
 
     <!-- Navbar -->
-    <body>
-        <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">
-                <img src="static/images/logo.svg"> 
-              </a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#1" aria-controls="1" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="1">
-                <div class="navbar-nav ms-auto">
-                  <a class="nav-link" href="#">Log In</a>
-                  <a class="nav-link" href="#">Register</a>
-                </div>
-              </div>
+    <body class="d-flex flex-column min-vh-100">
+      <nav class="navbar navbar-expand-lg sticky-top bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/">
+            <img src="static/images/logo.svg"> 
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#1" aria-controls="1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="1">
+            <div class="navbar-nav ms-auto">
+              <a class="nav-link" href="/login">Log In</a>
+              <a class="nav-link" href="/register">Register</a>
             </div>
-          </nav>
+          </div>
+        </div>
+      </nav>
 
-        {% block main %}{% endblock %}
+      {% block main %}{% endblock %}
+
+      <!-- Footer -->
+      <footer class="footer mt-auto py-3 bg-dark">
+        <div class="container">
+          <span>CS50 Final Project 2023!</span>
+        </div>
+      </footer>
     </body>
-    
-    <!-- Footer -->
-    <footer class="footer mt-auto py-3 bg-dark">
-      <div class="container">
-        <span>CS50 Final Project 2023!</span>
-      </div>
-    </footer>
 </html>

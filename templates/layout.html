@@ -34,10 +34,20 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="1">
-            <div class="navbar-nav ms-auto">
-              <a class="nav-link" href="/login">Log In</a>
-              <a class="nav-link" href="/register">Register</a>
+            {% if session["user_id"] %}
+            <div class="navbar-nav">
+              <a class="nav-link" href="/practices">Practices</a>
+              <a class="nav-link" href="/profiles">Profiles</a>
             </div>
+            <div class="navbar-nav ms-auto">
+              <a class="nav-link" href="/logout">Log Out</a>
+            </div>
+            {% else %}
+              <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/login">Log In</a>
+                <a class="nav-link" href="/register">Register</a>
+              </div>
+            {% endif %}
           </div>
         </div>
       </nav>

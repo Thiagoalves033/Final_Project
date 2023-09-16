@@ -1,5 +1,6 @@
 import sqlite3
 from flask import Flask, flash, redirect, render_template, request, session
+from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from helpers import is_valid
@@ -7,17 +8,25 @@ from helpers import is_valid
 # Configure application
 app = Flask(__name__)
 
+# Configure session to use filesystem (instead of signed cookies)
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
+
 # Configure SQLite database
 conn = sqlite3.connect('htools.db', check_same_thread=False)
 db = conn.cursor()
+
 
 @app.route("/")
 def index():
     return render_template("index.html")
 
+
 @app.route("/wrong")
 def wrong():
     return render_template("wrong.html")
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -49,10 +58,43 @@ def register():
         )
         conn.commit()
 
-        return redirect("/")
+        # Redirect to Login
+        return redirect("/login")
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    # Forget any user_id
+    # session.clear()
+
     if request.method == "GET":
         return render_template("login.html")
-    
+    else:
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        # Ensure everything was submitted correctly
+        if not username or not password:
+            return render_template("wrong.html")
+        
+        # Query, check if the user exists and if password is correct
+        user = db.execute("SELECT * FROM users WHERE username = ?", (username,))
+        row = user.fetchone()
+
+        if row == None or not check_password_hash(row[2], password):
+            return render_template("wrong.html")
+        
+        # Remember which user is logged in
+        session["user_id"] = row[0]
+
+        # Redirect to Profiles
+        return redirect("/")
+
+
+@app.route("/logout")
+def logout():
+    # Forget any user_id
+    session.clear()
+
+    # Redirect user
+    return redirect("/")

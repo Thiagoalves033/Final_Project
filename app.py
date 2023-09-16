@@ -8,12 +8,16 @@ from helpers import is_valid
 app = Flask(__name__)
 
 # Configure SQLite database
-db = sqlite3.connect('htools.db')
+conn = sqlite3.connect('htools.db', check_same_thread=False)
+db = conn.cursor()
 
 @app.route("/")
 def index():
     return render_template("index.html")
 
+@app.route("/wrong")
+def wrong():
+    return render_template("wrong.html")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -33,19 +37,19 @@ def register():
             return render_template("wrong.html")
         
         # Query for the username and check if it's already in use
-        in_use = db.execute("SELECT * FROM users WHERE username = ?", username)
+        in_use = db.execute("SELECT * FROM users WHERE username = ?", (username,))
 
-        if in_use.fetchone != None:
+        if in_use.fetchone() != None:
             return render_template("wrong.html")
 
         # Register the user
         db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", 
-                   username, 
-                   generate_password_hash(password, method="pbkdf2", salt_length=16)
+                   (username, 
+                   generate_password_hash(password, method="pbkdf2", salt_length=16),)
         )
+        conn.commit()
 
         return redirect("/")
-
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

@@ -3,7 +3,7 @@ from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from helpers import is_valid
+from helpers import is_valid, login_required
 
 # Configure application
 app = Flask(__name__)
@@ -98,3 +98,8 @@ def logout():
 
     # Redirect user
     return redirect("/")
+
+@app.route("/profiles")
+@login_required
+def profiles():
+    return render_template("profiles.html")

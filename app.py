@@ -103,3 +103,8 @@ def logout():
 @login_required
 def profiles():
     return render_template("profiles.html")
+
+@app.route("/practices")
+@login_required
+def practices():
+    return render_template("practices.html")

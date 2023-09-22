@@ -39,6 +39,12 @@ h2 {
     font-size: 40px;
 }
 
+h3 {
+    font-family: 'Amiri', serif;
+    color: black;
+    font-size: 35px;
+}
+
 .alter {
     background-color: whitesmoke;
 }

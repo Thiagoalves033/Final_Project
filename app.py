@@ -88,7 +88,7 @@ def login():
         session["user_id"] = row[0]
 
         # Redirect to Profiles
-        return redirect("/")
+        return redirect("/profiles")
 
 
 @app.route("/logout")

@@ -41,6 +41,7 @@ h2 {
 
 h3 {
     font-family: 'Amiri', serif;
+    font-weight: 700;
     color: black;
     font-size: 35px;
 }
@@ -114,4 +115,10 @@ a {
 .sideimg {
     width: 100%;
     height: 400px;
+}
+
+.error p {
+    font-family: 'Amiri', serif;
+    font-weight: 400;
+    font-size: 20px;
 }

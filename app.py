@@ -23,9 +23,9 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/wrong")
-def wrong():
-    return render_template("wrong.html")
+@app.route("/error")
+def error():
+    return render_template("error.html")
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -39,17 +39,17 @@ def register():
 
         # Ensure everything was submitted correctly and the passwords match
         if not username or not password or not confirmation or password != confirmation:
-            return render_template("wrong.html")
+            return render_template("error.html")
         
         # Ensure password has the correct format
         if is_valid(password) == False:
-            return render_template("wrong.html")
+            return render_template("error.html")
         
         # Query for the username and check if it's already in use
         in_use = db.execute("SELECT * FROM users WHERE username = ?", (username,))
 
         if in_use.fetchone() != None:
-            return render_template("wrong.html")
+            return render_template("error.html")
 
         # Register the user
         db.execute("INSERT INTO users (username, hash) VALUES (?, ?)", 
@@ -75,14 +75,14 @@ def login():
 
         # Ensure everything was submitted correctly
         if not username or not password:
-            return render_template("wrong.html")
+            return render_template("error.html")
         
         # Query, check if the user exists and if password is correct
         user = db.execute("SELECT * FROM users WHERE username = ?", (username,))
         row = user.fetchone()
 
         if row == None or not check_password_hash(row[2], password):
-            return render_template("wrong.html")
+            return render_template("error.html")
         
         # Remember which user is logged in
         session["user_id"] = row[0]

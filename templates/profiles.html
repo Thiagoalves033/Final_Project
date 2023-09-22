@@ -3,7 +3,25 @@
 {% block title %} Profiles {% endblock %}
 
 {% block main %}
-
-    PROFILES
-
+<div class="container-fluid border">
+    <div class="row">
+        <div class="d-flex align-items-start">
+            <div class="col-2">
+                <!-- Tab -->
+                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <button class="nav-link active" id="profile1" data-bs-toggle="pill" data-bs-target="#prf1" type="button" role="tab" aria-controls="prf1" aria-selected="true">Profile 1</button>      
+                </div>
+            </div>
+            
+            <div class="col-10 tc">
+                <!-- Content -->
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="prf1" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+                        asd
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

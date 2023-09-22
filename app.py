@@ -1,5 +1,5 @@
 import sqlite3
-from flask import Flask, flash, redirect, render_template, request, session
+from flask import Flask, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -99,10 +99,12 @@ def logout():
     # Redirect user
     return redirect("/")
 
+
 @app.route("/profiles")
 @login_required
 def profiles():
     return render_template("profiles.html")
+
 
 @app.route("/practices")
 @login_required

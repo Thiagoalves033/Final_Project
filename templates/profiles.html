@@ -14,6 +14,8 @@
         <div class="container">
             <div class="tab-content tc col-9" id="v-pills-tabContent">
                 <div class="tab-pane fade show active mt-3" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab" tabindex="0">
+                    
+                    <!-- Basic Information -->
                     <h2>Mike Ross</h2>
                     <hr>
                     <table class="table table table-bordered">
@@ -35,9 +37,10 @@
                         </tbody>
                     </table>
 
+                    <!-- Appointments -->
                     <h2>Appointments</h2>
                     <hr>
-                    <table class="table table table-bordered table-striped">
+                    <table class="table table table-bordered table-striped" id="ap_table">
                         <thead>
                             <th>Speciality</th>
                             <th>Date</th>
@@ -52,9 +55,29 @@
                         </tbody>
                     </table>
 
+                    <!-- Add new row to appointments-->
+                    <div class="row">
+                        <div class="col-3">
+                            <input class="form-control mt-3" type="text" placeholder="Specialty" id="specialty" autocomplete="off">
+                        </div>
+
+                        <div class="col-3">
+                            <input class="form-control mt-3" type="text" placeholder="Date" id="ap_date" autocomplete="off">
+                        </div>
+
+                        <div class="col-3">
+                            <input class="form-control mt-3" type="text" placeholder="Hour" id="hour" autocomplete="off">
+                        </div>
+
+                        <div class="col-3 mt-3">
+                            <button type="button" class="btn btn-secondary" id="ap_button">Add</button>
+                        </div>
+                    </div>
+
+                    <!-- Vaccination -->
                     <h2>Vaccination</h2>
                     <hr>
-                    <table class="table table table-bordered table-striped">
+                    <table class="table table table-bordered table-striped" id="va_table">
                         <thead>
                             <th>Vaccine</th>
                             <th>Dose</th>
@@ -68,16 +91,37 @@
                             </tr>
                         </tbody>
                     </table>
+                    
+
+                    <!-- Add new row to vaccination-->
+                    <div class="row">
+                        <div class="col-3">
+                            <input class="form-control mt-3" type="text" placeholder="Vaccine" id="vaccine" autocomplete="off">
+                        </div>
+
+                        <div class="col-3">
+                            <input class="form-control mt-3" type="text" placeholder="Dose" id="dose" autocomplete="off">
+                        </div>
+
+                        <div class="col-3">
+                            <input class="form-control mt-3" type="text" placeholder="Date" id="va_date" autocomplete="off">
+                        </div>
+
+                        <div class="col-3 mt-3">
+                            <button type="button" class="btn btn-secondary" id="va_button">Add</button>
+                        </div>
+                    </div>
+
                 </div>
-                
-                <!-- Form -->
+
+                <!-- New profile form -->
                 <div class="tab-pane fade" id="add" role="tabpanel" aria-labelledby="add-tab" tabindex="0">
                     <form>
                         <h2>Add a new profile:</h2>
 
                         <div class="row">
                             <div class="col-8">
-                                <input class="form-control mt-3" type="text" placeholder="Name" id="profile_name" name="profile_name" autofocus autocomplete="off" required>
+                                <input class="form-control mt-3" type="text" placeholder="Name" id="profile_name" autocomplete="off" required>
                             </div>
 
                             <div class="col-4 mt-3">
@@ -95,10 +139,9 @@
                             </div>
                         </div>
                         
-                        <input class="form-control mt-3" type="text" placeholder="Allergies" id="allergies" name="allergies" autocomplete="off" required>
+                        <input class="form-control mt-3" type="text" placeholder="Allergies" id="allergies" autocomplete="off" required>
 
-                        <input class="form-control mt-3" type="text" placeholder="Medications" id="medications" name="medications" autocomplete="off" required>
-
+                        <input class="form-control mt-3" type="text" placeholder="Medications" id="medications" autocomplete="off" required>
                     </form>
                 </div>
             </div>

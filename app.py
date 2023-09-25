@@ -104,7 +104,10 @@ def logout():
 @login_required
 def profiles():
     if request.method == "GET":
-        return render_template("profiles.html")
+        profiles = db.execute("SELECT * FROM profiles WHERE user_id = ?", (session["user_id"],)).fetchall()
+        print(profiles)
+
+        return render_template("profiles.html", PROFILES=profiles)
     else:
         name = request.form.get("name")
         blood = request.form.get("blood")

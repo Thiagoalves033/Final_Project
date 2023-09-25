@@ -105,7 +105,6 @@ def logout():
 def profiles():
     if request.method == "GET":
         profiles = db.execute("SELECT * FROM profiles WHERE user_id = ?", (session["user_id"],)).fetchall()
-        print(profiles)
 
         return render_template("profiles.html", PROFILES=profiles)
     else:

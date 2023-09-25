@@ -116,16 +116,16 @@
 
                 <!-- New profile form -->
                 <div class="tab-pane fade" id="add" role="tabpanel" aria-labelledby="add-tab" tabindex="0">
-                    <form>
+                    <form action="/profiles" method="post">
                         <h2>Add a new profile:</h2>
 
                         <div class="row">
                             <div class="col-8">
-                                <input class="form-control mt-3" type="text" placeholder="Name" id="profile_name" autocomplete="off" required>
+                                <input class="form-control mt-3" type="text" placeholder="Name" name="name" autocomplete="off" required>
                             </div>
 
                             <div class="col-4 mt-3">
-                                <select class="form-select" aria-label="Blood Type">
+                                <select class="form-select" aria-label="Blood Type" name="blood">
                                     <option selected disabled>Blood Type</option>
                                     <option value="1">A+</option>
                                     <option value="2">A-</option>
@@ -139,9 +139,11 @@
                             </div>
                         </div>
                         
-                        <input class="form-control mt-3" type="text" placeholder="Allergies" id="allergies" autocomplete="off" required>
+                        <input class="form-control mt-3" type="text" placeholder="Allergies" name="allergies" autocomplete="off" required>
 
-                        <input class="form-control mt-3" type="text" placeholder="Medications" id="medications" autocomplete="off" required>
+                        <input class="form-control mt-3" type="text" placeholder="Medications" name="medications" autocomplete="off" required>
+                        
+                        <button class="btn btn-primary mt-3" type="submit">Add!</button>
                     </form>
                 </div>
             </div>

@@ -7,6 +7,10 @@ CREATE TABLE users (
 CREATE TABLE profiles (
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    blood TEXT NOT NULL,
+    allergies TEXT NOT NULL,
+    medications TEXT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
 

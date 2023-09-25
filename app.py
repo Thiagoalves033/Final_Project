@@ -100,10 +100,27 @@ def logout():
     return redirect("/")
 
 
-@app.route("/profiles")
+@app.route("/profiles", methods=["GET", "POST"])
 @login_required
 def profiles():
-    return render_template("profiles.html")
+    if request.method == "GET":
+        return render_template("profiles.html")
+    else:
+        name = request.form.get("name")
+        blood = request.form.get("blood")
+        allergies = request.form.get("allergies")
+        medications = request.form.get("medications")
+
+        # Ensure everything was submitted
+        if not name or not blood or not allergies or not medications:
+            return render_template("error.html")
+
+        # Insert new profile
+        db.execute("INSERT INTO profiles (user_id, name, blood, allergies, medications) VALUES (?, ?, ?, ?, ?)", 
+                   (session["user_id"], name, blood, allergies, medications))
+        conn.commit()
+
+        return redirect("/profiles")
 
 
 @app.route("/practices")

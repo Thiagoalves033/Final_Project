@@ -109,21 +109,44 @@ def profiles():
         return render_template("profiles.html", PROFILES=profiles)
     else:
         name = request.form.get("name")
+        birth = request.form.get("birthdate")
         blood = request.form.get("blood")
         allergies = request.form.get("allergies")
         medications = request.form.get("medications")
+        chronic = request.form.get("chronic")
+        smokedrink = request.form.get("smokedrink")
 
         # Ensure everything was submitted
-        if not name or not blood or not allergies or not medications:
+        if not name or not birth or not blood or not allergies or not medications or not chronic or not smokedrink:
             return render_template("error.html")
 
         # Insert new profile
-        db.execute("INSERT INTO profiles (user_id, name, blood, allergies, medications) VALUES (?, ?, ?, ?, ?)", 
-                   (session["user_id"], name, blood, allergies, medications))
+        db.execute("INSERT INTO profiles (user_id, name, birthdate, blood, allergies, medications, diseases, smokedrink) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", 
+                   (session["user_id"], name, birth, blood, allergies, medications, chronic, smokedrink))
         conn.commit()
 
         return redirect("/profiles")
 
+@app.route("/add_appointment", methods=["POST"])
+@login_required
+def add_appointment():
+    specialty = request.form.get("specialty")
+    date = request.form.get("ap_date")
+    hour = request.form.get("hour")
+
+    tab = request.form.get("activeTab")
+
+    # Ensure everything was submitted
+    if not specialty or not date or not hour:
+        return render_template("error.html")
+    
+    # Insert new row
+    db.execute("INSERT INTO appointments (profile_id, specialty, date, time) VALUES (?, ?, ?, ?)", 
+               (tab, specialty, date, hour))
+    
+    conn.commit()
+
+    return redirect("/profiles")
 
 @app.route("/practices")
 @login_required

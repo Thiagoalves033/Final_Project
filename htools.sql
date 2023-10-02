@@ -8,9 +8,12 @@ CREATE TABLE profiles (
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER NOT NULL,
     name TEXT NOT NULL,
+    birthdate DATE NOT NULL,
     blood TEXT NOT NULL,
     allergies TEXT NOT NULL,
     medications TEXT NOT NULL,
+    diseases TEXT NOT NULL,
+    smokedrink TEXT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
 

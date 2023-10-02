@@ -112,17 +112,18 @@ def profiles():
         birth = request.form.get("birthdate")
         blood = request.form.get("blood")
         allergies = request.form.get("allergies")
-        medications = request.form.get("medications")
         chronic = request.form.get("chronic")
-        smokedrink = request.form.get("smokedrink")
+        medications = request.form.get("medications")
+        smoke = request.form.get("smoke")
+        alcohol = request.form.get("alcohol")
 
         # Ensure everything was submitted
-        if not name or not birth or not blood or not allergies or not medications or not chronic or not smokedrink:
+        if not name or not birth or not blood or not allergies or not medications or not chronic or not smoke or not alcohol:
             return render_template("error.html")
 
         # Insert new profile
-        db.execute("INSERT INTO profiles (user_id, name, birthdate, blood, allergies, medications, diseases, smokedrink) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", 
-                   (session["user_id"], name, birth, blood, allergies, medications, chronic, smokedrink))
+        db.execute("INSERT INTO profiles (user_id, name, birthdate, blood, allergies, diseases, medications, smoke, alcohol) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", 
+                   (session["user_id"], name, birth, blood, allergies, chronic, medications, smoke, alcohol))
         conn.commit()
 
         return redirect("/profiles")

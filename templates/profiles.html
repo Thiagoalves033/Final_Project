@@ -21,7 +21,7 @@
                     <!-- Basic Information -->
                     <h2>{{ profile[2] }}</h2>
                     <hr>
-                    <table class="table table table-bordered">
+                    <table class="table table table-bordered" style="text-align: left;">
                         <tbody>
                             <tr>
                                 <th scope="row">Date of Birth</th>
@@ -45,11 +45,16 @@
 
                             <tr>
                                 <th scope="row">Chronic Diseases</th>
+                                <td>{{ profile[7] }}</td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Smoke</th>
                                 <td>{{ profile[-2] }}</td>
                             </tr>
 
                             <tr>
-                                <th scope="row">Smoke / Alcohol</th>
+                                <th scope="row">Alcohol</th>
                                 <td>{{ profile[-1] }}</td>
                             </tr>
                         </tbody>
@@ -83,7 +88,7 @@
                             </div>
                             
                             <div class="col-2 mt-3">
-                                <input class="form-control" type="date" name="birthdate" autocomplete="off" required>
+                                <input class="form-control" placeholder="Birth Date" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" name="birthdate" autocomplete="off" required>
                             </div>
                         </div>
                         
@@ -93,7 +98,9 @@
 
                         <input class="form-control mt-3" type="text" placeholder="Chronic Diseases" name="chronic" autocomplete="off" required>
 
-                        <input class="form-control mt-3" type="text" placeholder="Smoke or Drink" name="smokedrink" autocomplete="off" required>
+                        <input class="form-control mt-3" type="text" placeholder="Smoke" name="smoke" autocomplete="off" required>
+
+                        <input class="form-control mt-3" type="text" placeholder="Alcohol" name="alcohol" autocomplete="off" required>
                         
                         <button class="btn btn-primary mt-3" type="submit">Add!</button>
                     </form>

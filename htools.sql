@@ -11,9 +11,10 @@ CREATE TABLE profiles (
     birthdate DATE NOT NULL,
     blood TEXT NOT NULL,
     allergies TEXT NOT NULL,
-    medications TEXT NOT NULL,
     diseases TEXT NOT NULL,
-    smokedrink TEXT NOT NULL,
+    medications TEXT NOT NULL,
+    smoke TEXT NOT NULL,
+    alcohol TEXT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES users (id)
 );
 

@@ -39,13 +39,18 @@
                             </tr>
 
                             <tr>
-                                <th scope="row">Medications</th>
+                                <th scope="row">Chronic Diseases</th>
                                 <td>{{ profile[6] }}</td>
                             </tr>
 
                             <tr>
-                                <th scope="row">Chronic Diseases</th>
+                                <th scope="row">Previous Procedures</th>
                                 <td>{{ profile[7] }}</td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">Medications</th>
+                                <td>{{ profile[8] }}</td>
                             </tr>
 
                             <tr>
@@ -94,9 +99,11 @@
                         
                         <input class="form-control mt-3" type="text" placeholder="Allergies" name="allergies" autocomplete="off" required>
 
-                        <input class="form-control mt-3" type="text" placeholder="Medications" name="medications" autocomplete="off" required>
-
                         <input class="form-control mt-3" type="text" placeholder="Chronic Diseases" name="chronic" autocomplete="off" required>
+
+                        <input class="form-control mt-3" type="text" placeholder="Previous Surgeries or Treatments" name="procedures" autocomplete="off" required>
+                        
+                        <input class="form-control mt-3" type="text" placeholder="Medications" name="medications" autocomplete="off" required>
 
                         <input class="form-control mt-3" type="text" placeholder="Smoke" name="smoke" autocomplete="off" required>
 

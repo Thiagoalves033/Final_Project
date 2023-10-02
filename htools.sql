@@ -12,6 +12,7 @@ CREATE TABLE profiles (
     blood TEXT NOT NULL,
     allergies TEXT NOT NULL,
     diseases TEXT NOT NULL,
+    procedures TEXT NOT NULL,
     medications TEXT NOT NULL,
     smoke TEXT NOT NULL,
     alcohol TEXT NOT NULL,

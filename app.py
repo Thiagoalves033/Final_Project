@@ -144,7 +144,33 @@ def delete():
 @app.route("/bmi", methods=["GET", "POST"])
 @login_required
 def bmi():
-    return render_template("bmi.html")
+    if request.method == "POST":
+        if 'metric' in request.form:
+            weight = float(request.form.get("m-weight"))
+            height = float(request.form.get("m-height"))
+        
+        elif 'imperial' in request.form:
+            weight = float(request.form.get("i-weight"))
+            height = float(request.form.get("i-height"))
+        
+        else:
+            return render_template("error.html")
+
+        # Ensure values were submitted correctly
+        if not weight or weight < 0 or not height or height < 0:
+                return render_template("error.html")
+        
+        # Calculate BMI
+        if 'metric' in request.form:
+            result = f"{weight / (height * height):.1f}"
+
+        if 'imperial' in request.form:
+            result = f"{(703 * weight) / (height * height):.1f}"
+
+        return render_template("bmi.html", RESULT=result)
+
+    else:
+        return render_template("bmi.html")
 
 
 @app.route("/practices")

@@ -12,24 +12,24 @@
 
     <div class="alter">
         <div class="container my-2 tc">
-            <div class="form">
+            <form action="/bmi" method="post">
                 <h3>Metric</h3>
                 <hr>
-                <input type="number" placeholder="Weight(kg)" name="weight" autocomplete="off" required>
-                <input type="number" placeholder="Height(m)" name="height" autocomplete="off" required>
-                <button class="btn btn-warning" type="submit">Calculate!</button>
+                <input type="number" placeholder="Weight(kg)" name="m-weight" autocomplete="off">
+                <input type="number" step="0.01" placeholder="Height(m)" name="m-height" autocomplete="off">
+                <button class="btn btn-warning" type="submit" name="metric">Calculate!</button>
             </div>
         </div>
     </div>  
 
     <div class="alter">
         <div class="container my-2 tc">
-            <div class="form">
+            <form action="/bmi" method="post">
                 <h3>Imperial</h3>
                 <hr>
-                <input type="number" placeholder="Weight(lbs)" name="weight" autocomplete="off" required>
-                <input type="number" placeholder="Height(in)" name="height" autocomplete="off" required>
-                <button class="btn btn-warning" type="submit">Calculate!</button>
+                <input type="number" placeholder="Weight(lbs)" name="i-weight" autocomplete="off">
+                <input type="number" placeholder="Height(in)" name="i-height" autocomplete="off">
+                <button class="btn btn-warning" type="submit" name="imperial">Calculate!</button>
             </div>
         </div>
     </div>
@@ -43,7 +43,7 @@
     <div class="alter">
         <div class="container">
             <div class="textimg">
-                <p>While it's not perfect, the BMI can be used as a general health indicator. In short, the higher it is, the higher the risk of developing conditions such as diabetes, arthritis, hypertension, high colestherol, and others.</p>
+                <p>{{ RESULT }}While it's not perfect, the BMI can be used as a general health indicator. In short, the higher it is, the higher the risk of developing conditions such as diabetes, arthritis, hypertension, high colestherol, and others.</p>
             </div>
         </div>
 

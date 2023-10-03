@@ -64,6 +64,12 @@
                             </tr>
                         </tbody>
                     </table>
+
+                    <form action="/delete_profile" method="post">
+                        <input type="hidden" name="profile_id" value="{{ profile[2] }}">
+                        <button class="btn btn-danger" type="submit" name="deletetab">Delete Profile</button>
+                    </form>
+
                 </div>
                 {% endfor %}
 

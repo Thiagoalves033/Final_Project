@@ -129,26 +129,17 @@ def profiles():
 
         return redirect("/profiles")
 
-@app.route("/add_appointment", methods=["POST"])
+
+@app.route("/delete_profile", methods=["POST"])
 @login_required
-def add_appointment():
-    specialty = request.form.get("specialty")
-    date = request.form.get("ap_date")
-    hour = request.form.get("hour")
+def delete():
+    pf_id = request.form.get("profile_id")
+    db.execute ("DELETE FROM profiles WHERE name = ?", (pf_id,))
 
-    tab = request.form.get("activeTab")
-
-    # Ensure everything was submitted
-    if not specialty or not date or not hour:
-        return render_template("error.html")
-    
-    # Insert new row
-    db.execute("INSERT INTO appointments (profile_id, specialty, date, time) VALUES (?, ?, ?, ?)", 
-               (tab, specialty, date, hour))
-    
     conn.commit()
 
     return redirect("/profiles")
+
 
 @app.route("/practices")
 @login_required

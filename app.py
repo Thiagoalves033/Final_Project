@@ -141,6 +141,12 @@ def delete():
     return redirect("/profiles")
 
 
+@app.route("/bmi", methods=["GET", "POST"])
+@login_required
+def bmi():
+    return render_template("bmi.html")
+
+
 @app.route("/practices")
 @login_required
 def practices():

@@ -90,7 +90,7 @@ h3 {
 
 .logbox {
     width: 400px;
-    height: 400px;
+    height: 450px;
     background: transparent;
     border: 2px solid white;
     border-radius: 20px;
@@ -101,6 +101,11 @@ h3 {
 
 .logbox p {
     color: white;
+}
+
+.logbox .form-text {
+    color: white;
+    text-align: left;
 }
 
 a {

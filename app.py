@@ -191,7 +191,7 @@ def bmi():
             return render_template("error.html")
 
         # Ensure values were submitted correctly
-        if not weight or weight < 0 or not height or height < 0:
+        if not weight or weight < 1 or not height or height < 1:
                 return render_template("error.html")
         
         # Calculate BMI

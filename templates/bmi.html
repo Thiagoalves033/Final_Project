@@ -12,25 +12,25 @@
 
     <div class="alter">
         <div class="container my-2 tc">
-            <form action="/bmi" method="post">
+            <form action="/bmi" method="post" id="metric-form">
                 <h3>Metric</h3>
                 <hr>
-                <input type="number" placeholder="Weight(kg)" name="m-weight" autocomplete="off">
-                <input type="number" step="0.01" placeholder="Height(m)" name="m-height" autocomplete="off">
+                <input type="number" step="any" min="1" placeholder="Weight(kg)" name="m-weight" required autocomplete="off">
+                <input type="number" step="0.01" min="1" placeholder="Height(m)" name="m-height" required autocomplete="off">
                 <button class="btn btn-warning" type="submit" name="metric">Calculate!</button>
-            </div>
+            </form>
         </div>
     </div>  
 
     <div class="alter">
         <div class="container my-2 tc">
-            <form action="/bmi" method="post">
+            <form action="/bmi" method="post" id="imperial-form">
                 <h3>Imperial</h3>
                 <hr>
-                <input type="number" placeholder="Weight(lbs)" name="i-weight" autocomplete="off">
-                <input type="number" placeholder="Height(in)" name="i-height" autocomplete="off">
+                <input type="number" step="any" min="1" placeholder="Weight(lbs)" name="i-weight" required autocomplete="off">
+                <input type="number" step="0.01" min="1" placeholder="Height(in)" name="i-height" required autocomplete="off">
                 <button class="btn btn-warning" type="submit" name="imperial">Calculate!</button>
-            </div>
+            </form>
         </div>
     </div>
 

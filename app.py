@@ -135,7 +135,7 @@ def profiles():
 @login_required
 def delete():
     pf_id = request.form.get("profile_id")
-    db.execute("DELETE FROM profiles WHERE name = ?", (pf_id,))
+    db.execute("DELETE FROM profiles WHERE id = ?", (pf_id,))
 
     conn.commit()
 

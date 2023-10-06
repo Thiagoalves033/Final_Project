@@ -65,12 +65,55 @@
                         </tbody>
                     </table>
 
-                    <form action="/delete_profile" method="post">
+                    <h2>Immunization</h2>
+                    <table class="table table table-bordered my-3">
+                        <thead>
+                            <tr>
+                                <th>Vaccine</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for vaccine in VACCINES %}
+
+                                {% if vaccine[2] == profile[2] %}
+                                    <tr>
+                                        <td>{{ vaccine[3] }}</td> 
+                                        <td>{{ vaccine[4] }}</td> 
+                                    </tr>
+                                {% endif %}
+
+                            {% endfor %}
+                        </tbody> 
+                    </table>
+
+                    <form action="/vaccination" method="post">
+                        <div class="row">
+                            <div class="col-6">
+                                <input class="form-control" type="text" placeholder="Vaccine" name="vaccine" required>
+                            </div>
+
+                            <div class="col-4">
+                                <input class="form-control" type="date" placeholder="Date" name="v_date" required>
+                            </div>
+
+                            <div class="col-2">
+                                <button class="btn btn-success" type="submit" name="submit_vac">Add Vaccine</button>
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="profile_id" value="{{ profile[2] }}">
+                    </form>
+
+                    <form class="my-5" action="/delete_profile" method="post">
                         <input type="hidden" name="profile_id" value="{{ profile[2] }}">
                         <button class="btn btn-danger" type="submit" name="deletetab">Delete Profile</button>
                     </form>
-
+ 
                 </div>
+
+                
                 {% endfor %}
 
                 <!-- New profile form -->
@@ -98,7 +141,7 @@
                                 </select>
                             </div>
                             
-                            <div class="col-2 mt-3">
+                            <div class="col-xl-2 mt-3">
                                 <input class="form-control" placeholder="Birth Date" onfocus="(this.type='date')" onblur="if(this.value==''){this.type='text'}" name="birthdate" autocomplete="off" required>
                             </div>
                         </div>

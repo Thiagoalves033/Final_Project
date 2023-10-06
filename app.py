@@ -105,8 +105,11 @@ def logout():
 def profiles():
     if request.method == "GET":
         profiles = db.execute("SELECT * FROM profiles WHERE user_id = ?", (session["user_id"],)).fetchall()
+        vaccines = db.execute("SELECT * FROM vaccines WHERE user_id = ?", (session["user_id"],)).fetchall()
 
-        return render_template("profiles.html", PROFILES=profiles)
+        print(vaccines)
+
+        return render_template("profiles.html", PROFILES=profiles, VACCINES=vaccines)
     else:
         name = request.form.get("name")
         birth = request.form.get("birthdate")
@@ -136,6 +139,20 @@ def delete():
     pf_id = request.form.get("profile_id")
     db.execute ("DELETE FROM profiles WHERE name = ?", (pf_id,))
 
+    conn.commit()
+
+    return redirect("/profiles")
+
+
+@app.route("/vaccination", methods=["POST"])
+@login_required
+def vaccination():
+    pf_id = request.form.get("profile_id")
+    vac = request.form.get("vaccine")
+    date = request.form.get("v_date") 
+
+    db.execute ("INSERT INTO vaccines (user_id, profile_id, vaccine, date) VALUES (?, ?, ?, ?)", (session["user_id"], pf_id, vac, date))
+    
     conn.commit()
 
     return redirect("/profiles")

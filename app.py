@@ -107,8 +107,6 @@ def profiles():
         profiles = db.execute("SELECT * FROM profiles WHERE user_id = ?", (session["user_id"],)).fetchall()
         vaccines = db.execute("SELECT * FROM vaccines WHERE user_id = ?", (session["user_id"],)).fetchall()
 
-        print(vaccines)
-
         return render_template("profiles.html", PROFILES=profiles, VACCINES=vaccines)
     else:
         name = request.form.get("name")
@@ -137,7 +135,7 @@ def profiles():
 @login_required
 def delete():
     pf_id = request.form.get("profile_id")
-    db.execute ("DELETE FROM profiles WHERE name = ?", (pf_id,))
+    db.execute("DELETE FROM profiles WHERE name = ?", (pf_id,))
 
     conn.commit()
 
@@ -151,11 +149,30 @@ def vaccination():
     vac = request.form.get("vaccine")
     date = request.form.get("v_date") 
 
-    db.execute ("INSERT INTO vaccines (user_id, profile_id, vaccine, date) VALUES (?, ?, ?, ?)", (session["user_id"], pf_id, vac, date))
+    if not pf_id or not vac or not date:
+        return render_template("error.html")
+
+    db.execute("INSERT INTO vaccines (user_id, profile_id, vaccine, date) VALUES (?, ?, ?, ?)", (session["user_id"], pf_id, vac, date))
     
     conn.commit()
 
     return redirect("/profiles")
+
+
+@app.route("/delete_vaccine", methods=["POST"])
+@login_required
+def delete_vaccine():
+        pf_id = request.form.get("profile_id")
+        vaccine = request.form.get("vac_name")
+
+        if not pf_id or not vaccine:
+            return render_template("error.html")
+        
+        db.execute("DELETE FROM vaccines WHERE (user_id = ?) AND (profile_id = ?) AND (vaccine = ?)", (session["user_id"], pf_id, vaccine))
+        
+        conn.commit()
+
+        return redirect("/profiles")
 
 
 @app.route("/bmi", methods=["GET", "POST"])

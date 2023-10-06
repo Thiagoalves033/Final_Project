@@ -8,7 +8,7 @@
     <div class="d-flex">
         <div class="nav flex-column nav-pills me-3 col-2 mt-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             {% for profile in PROFILES %}
-            <button class="nav-link" id="{{ profile[0] }}" data-bs-toggle="pill" data-bs-target="#{{ profile [2] }}" type="button" role="tab" aria-controls="{{ profile [2] }}" aria-selected="false">{{ profile[2] }}</button>
+            <button class="nav-link" id="{{ profile [2] }}-{{ profile[0] }}" data-bs-toggle="pill" data-bs-target="#{{ profile [0] }}" type="button" role="tab" aria-controls="{{ profile [0] }}" aria-selected="false">{{ profile[2] }}</button>
             {% endfor %}
             <button class="nav-link" id="add-tab" data-bs-toggle="pill" data-bs-target="#add" type="button" role="tab" aria-controls="add" aria-selected="false">Add New</button>
         </div>
@@ -16,7 +16,7 @@
         <div class="container">
             <div class="tab-content tc col-9" id="v-pills-tabContent">
                 {% for profile in PROFILES %}
-                <div class="tab-pane fade mt-3" id="{{ profile[2] }}" role="tabpanel" aria-labelledby="{{ profile [0] }}" tabindex="0">
+                <div class="tab-pane fade mt-3" id="{{ profile[0] }}" role="tabpanel" aria-labelledby="{{ profile [2] }}-{{ profile[0] }}" tabindex="0">
                     
                     <!-- Basic Information -->
                     <h2>{{ profile[2] }}</h2>
@@ -77,10 +77,16 @@
                         <tbody>
                             {% for vaccine in VACCINES %}
 
-                                {% if vaccine[2] == profile[2] %}
+                                {% if vaccine[2] == profile[0] %}
                                     <tr>
                                         <td>{{ vaccine[3] }}</td> 
-                                        <td>{{ vaccine[4] }}</td> 
+                                        <td>{{ vaccine[4] }}</td>
+
+                                        <form action="/delete_vaccine" method="post">
+                                            <input type="hidden" name="profile_id" value="{{ profile[0] }}">
+                                            <input type="hidden" name="vac_name" value="{{ vaccine[3] }}">
+                                            <td><button class="btn btn-danger" type="submit">X</button></td>
+                                        </form>
                                     </tr>
                                 {% endif %}
 
@@ -90,24 +96,24 @@
 
                     <form action="/vaccination" method="post">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-md-6">
                                 <input class="form-control" type="text" placeholder="Vaccine" name="vaccine" required>
                             </div>
 
-                            <div class="col-4">
+                            <div class="col-md-4">
                                 <input class="form-control" type="date" placeholder="Date" name="v_date" required>
                             </div>
 
-                            <div class="col-2">
+                            <div class="col-md-2">
                                 <button class="btn btn-success" type="submit" name="submit_vac">Add Vaccine</button>
                             </div>
                         </div>
 
-                        <input type="hidden" name="profile_id" value="{{ profile[2] }}">
+                        <input type="hidden" name="profile_id" value="{{ profile[0] }}">
                     </form>
 
                     <form class="my-5" action="/delete_profile" method="post">
-                        <input type="hidden" name="profile_id" value="{{ profile[2] }}">
+                        <input type="hidden" name="profile_id" value="{{ profile[0] }}">
                         <button class="btn btn-danger" type="submit" name="deletetab">Delete Profile</button>
                     </form>
  

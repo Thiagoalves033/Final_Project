@@ -180,20 +180,26 @@ def delete_vaccine():
 def bmi():
     if request.method == "POST":
         if 'metric' in request.form:
-            weight = float(request.form.get("m-weight"))
-            height = float(request.form.get("m-height"))
+            weight = request.form.get("m-weight")
+            height = request.form.get("m-height")
         
         elif 'imperial' in request.form:
-            weight = float(request.form.get("i-weight"))
-            height = float(request.form.get("i-height"))
+            weight = request.form.get("i-weight")
+            height = request.form.get("i-height")
         
         else:
             return render_template("error.html")
 
         # Ensure values were submitted correctly
-        if not weight or weight < 1 or not height or height < 1:
+        if not weight or not height:
                 return render_template("error.html")
-        
+
+        weight = float(weight)
+        height = float(height)
+
+        if weight < 1 or height < 1:
+            return render_template("error.html")
+
         # Calculate BMI
         if 'metric' in request.form:
             result = f"{weight / (height * height):.1f}"

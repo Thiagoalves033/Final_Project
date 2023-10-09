@@ -4,8 +4,17 @@
 
 {% block main %}
     <div class="container-fluid error">
-        <h3>Request Error</h3>
-        <p>Something went wrong with your request.</p>
-        <p>Please, try again later.</p>
+        <h2>ERROR</h2>
+        <p>Something went wrong, check the possible reasons:</p>
+        
+        <h4>Request Error</h4>
+        <li class="my-3">Something is being submitted in an unsupported way.</li>
+
+        <h4>Login Error</h4>
+        <li class="my-3">Incorrect username and/or password.</li>
+
+        <h4>Register Error</h4>
+        <li class="my-3">Username already in use.</li>
+        <li class="my-3">Passwords do not match.</li>
     </div>
 {% endblock %}

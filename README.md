@@ -14,7 +14,7 @@ The logo was created using Figma.
 
 The following video showcases Health Tools and how to use all of it's functionalities! 
 
---- VIDEO ---
+Video: https://youtu.be/1qldnvUjp_Y
 
 As seen in the demonstration, Health Tools has three main features:
 

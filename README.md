@@ -46,7 +46,7 @@ Health Tools utilises the SQL Database SQLite3.
 
 ## How to Launch the Application:
 
-1) Clone this github repository: `git clone https://github.com/Thiagoalves033/Final_Project.git`
+1) Clone this github repository: `git clone https://github.com/Thiagoalves033/Health-Tools.git`
 2) Open the CLI inside the downloaded folder
 3) Activate the enviroment by using: `. venv/bin/activate`
 4) Run the Flask application by using: `flask run`
